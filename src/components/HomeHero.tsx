@@ -64,13 +64,13 @@ const HomeHero = () => {
       {/* Arrows */}
       <button
         onClick={prevSlide}
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/20 text-white p-2 rounded-full opacity-70 hover:opacity-100 transition"
+        className="absolute left-4 top-3/4 -translate-y-1/2 bg-black/20 text-white p-2 rounded-full opacity-70 hover:opacity-100 transition"
       >
         <FiArrowLeftCircle size={28} />
       </button>
       <button
         onClick={nextSlide}
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/20 text-white p-2 rounded-full opacity-70 hover:opacity-100 transition"
+        className="absolute right-4 top-3/4 -translate-y-1/2 bg-black/20 text-white p-2 rounded-full opacity-70 hover:opacity-100 transition"
       >
         <FiArrowRightCircle size={28} />
       </button>

@@ -20,7 +20,7 @@ interface InfoCardProps {
 // 2. STATIC DATA (FINALIZED LOCATION DETAILS)
 // ----------------------------------------------------------------------
 
-const LOCATION_QUERY = "RVJF+Q74, 930103, Jos, Nigeria";
+const LOCATION_QUERY = "Zarmaganda Diye, Off Rayfield Road, Jos, Nigeria";
 const ENCODED_LOCATION = encodeURIComponent(LOCATION_QUERY);
 
 // 1. Link for the "Get Directions" button (opens Google Maps web/app)
@@ -34,13 +34,13 @@ const CONTACT_INFO = [
     {
         icon: Mail,
         title: "Email Address",
-        detail: "info@gfm-youth.org",
+        detail: "houseofoperaworld@gmail.com",
         link: "mailto:info@gfm-youth.org",
     },
     {
         icon: Phone,
         title: "Phone Number",
-        detail: "+234 800 123 4567",
+        detail: "+234 802 642 9018",
         link: "tel:+2348001234567",
     },
     {
@@ -63,9 +63,9 @@ const SOCIAL_LINKS = [
 // ----------------------------------------------------------------------
 
 const ContactInfoCard: FC<InfoCardProps> = ({ icon: IconComponent, title, detail, link }) => (
-    <a href={link} className="block p-6 bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 border-t-4 border-fuchsia-600 group" target={title === "Main Location" ? "_blank" : "_self"} rel="noopener noreferrer">
-        <IconComponent className="w-10 h-10 text-fuchsia-600 mb-3 group-hover:text-purple-700 transition-colors" />
-        <h3 className="text-xl font-bold text-gray-800 mb-1">{title}</h3>
+    <a href={link} className="block p-6 bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 border-t-3 border-fuchsia-600 group" target={title === "Main Location" ? "_blank" : "_self"} rel="noopener noreferrer">
+        <IconComponent className="w-8 h-8 text-fuchsia-600 mb-2 group-hover:text-purple-700 transition-colors" />
+        <h3 className="text-lg font-bold text-gray-800 mb-1">{title}</h3>
         <p className="text-gray-600 group-hover:text-gray-900 font-medium">{detail}</p>
     </a>
 );
@@ -94,22 +94,22 @@ const ContactPage: FC = () => {
             {/* Header Section */}
             <section className="bg-purple-800 text-white py-20 px-6 text-center">
                 <div className="max-w-4xl mx-auto">
-                    <h1 className="text-4xl md:text-5xl font-extrabold mb-4 uppercase tracking-tight">
+                    <h1 className="text-3xl md:text-4xl font-extrabold mb-3 uppercase tracking-tight">
                         <span className="bg-clip-text text-transparent bg-linear-to-r from-fuchsia-300 to-white">
-                            Get In Touch
+                            GET IN TOUCH
                         </span>
                     </h1>
-                    <p className="text-xl md:text-2xl font-light opacity-90">
+                    <p className="text-xl md:text-1xl font-light opacity-90">
                         We are here to answer your questions, hear your testimonies, and connect with you.
                     </p>
                 </div>
             </section>
 
             {/* Direct Contact Information Section */}
-            <section className="max-w-7xl mx-auto py-16 px-6">
+            <section className="max-w-5xl mx-auto py-16 px-6">
                 <div className="text-center mb-12">
                     <p className="text-fuchsia-700 font-semibold mb-2 text-sm uppercase tracking-widest">CONNECT DIRECTLY</p>
-                    <h2 className="text-3xl font-bold text-gray-900">Reach Us Through Any Channel</h2>
+                    <h2 className="text-2xl font-bold text-gray-900">REACH US THROUGH ANY CHANNEL</h2>
                 </div>
                 <div className="grid md:grid-cols-3 gap-8">
                     {CONTACT_INFO.map((item, index) => (
@@ -119,21 +119,21 @@ const ContactPage: FC = () => {
             </section>
             
             {/* Contact Form Section (The main focus) */}
-            <section className="bg-white py-16 px-6 shadow-inner">
-                <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-start">
+            <section className="bg-white py-12 px-6 shadow-inner">
+                <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-12 items-start">
                     
                     {/* Form Description */}
                     <div className="md:sticky md:top-8">
-                        <MessageSquare className="w-12 h-12 text-purple-700 mb-4" />
-                        <h2 className="text-3xl font-bold mb-4 text-gray-900">Send Us a Message</h2>
-                        <p className="text-gray-700 leading-relaxed mb-6">
+                        <MessageSquare className="w-9 h-9 text-fuchsia-600 mb-4" />
+                        <h2 className="text-2xl font-bold mb-4 text-gray-900">SEND US A MESSAGE</h2>
+                        <p className="text-gray-700 leading-relaxed mb-5">
                             Have a question about our programs, a prayer request, or just want to say hello? Use the form below, and our team will get back to you promptly.
                         </p>
                         
                         {/* Social Links */}
                         <div className="pt-4 border-t border-gray-100">
-                            <h3 className="text-lg font-semibold mb-3 text-gray-800">Follow Our Journey</h3>
-                            <div className="flex space-x-4">
+                            <h3 className="text-lg font-semibold mb-2 text-gray-800">Connect live with us</h3>
+                            <div className="flex space-x-3">
                                 {SOCIAL_LINKS.map((social) => {
                                     const SocialIcon = social.icon;
                                     return (
@@ -148,7 +148,7 @@ const ContactPage: FC = () => {
 
                     {/* The Form */}
                     <form onSubmit={handleSubmit} className="p-8 bg-gray-50 border border-fuchsia-100 rounded-xl shadow-lg">
-                        <div className="mb-6">
+                        <div className="mb-5">
                             <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">Your Name</label>
                             <input 
                                 type="text" 
@@ -161,7 +161,7 @@ const ContactPage: FC = () => {
                             />
                         </div>
 
-                        <div className="mb-6">
+                        <div className="mb-5">
                             <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
                             <input 
                                 type="email" 

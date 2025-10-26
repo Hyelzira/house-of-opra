@@ -1,90 +1,219 @@
 // src/ActivitiesPage.tsx
-import { useState } from 'react'; // <-- 1. Import useState
+import { useState } from 'react'; 
 import type { FC } from 'react';
-import {
-    Calendar,     
-    MapPin,       
-    Clock,        
-    Sparkles,     
-    ArrowRight,   
-    Users,        
-    X,            // <-- Icon for closing the modal
+import { Link } from 'react-router-dom'; // Import Link for navigation
+import { // Added imports for the new Header/Footer
+    Calendar,     
+    MapPin,       
+    Clock,        
+    Sparkles,     
+    ArrowRight,   
+    Users,        
+    X,            
+    Heart, Home, Mail, Phone, Facebook, Twitter, Instagram 
 } from 'lucide-react';
 
 // --- TYPE DEFINITION ---
 type UpcomingEvent = typeof UPCOMING_EVENTS[0];
 
-// --- PLACEHOLDER COMPONENTS ---
+// ----------------------------------------------------------------------
+// 1. PROFESSIONAL & CREATIVE HEADER COMPONENT 
+// ----------------------------------------------------------------------
 
-// Placeholder for a simple Footer, consistent with your other pages
-const Footer: FC = () => (
-    <footer className="bg-gray-900 text-gray-400 text-center py-8 px-6 text-sm">
-        <div className="max-w-7xl mx-auto">
-            <p>© {new Date().getFullYear()} GFM Youth Community. All rights reserved.</p>
+const ProfessionalHeader: FC = () => (
+    <header className="bg-white shadow-xl sticky top-0 z-20 transition-all duration-300 border-b border-gray-100">
+        <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            {/* Logo/Brand - Creative Font Styling */}
+            <Link to="/" className="text-1xl font-black text-gray-700 tracking-tight flex items-center">
+                GLOBAL FLAME <span className="text-fuchsia-600 ml-1 font-bold">YOUTH</span>
+                <Sparkles className="w-3 h-3 ml-2 text-yellow-500 hidden sm:block" />
+            </Link>
+
+            {/* Navigation Links (Desktop) - Highlight Activities/Events */}
+            <nav className="hidden md:flex space-x-7 text-lg font-semibold">
+                <Link to="/" className="text-gray-600 hover:text-fuchsia-600 transition-colors flex items-center relative group">
+                    Home
+                    <span className="absolute bottom-0 left-0 w-full h-0.5 bg-fuchsia-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                </Link>
+                <Link to="/services" className="text-gray-600 hover:text-fuchsia-600 transition-colors flex items-center relative group">
+                    Services
+                    <span className="absolute bottom-0 left-0 w-full h-0.5 bg-fuchsia-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                </Link>
+                {/* Highlight current page with a distinct pill shape */}
+                <Link to="/activities" className="px-3 py-1 text-purple-700 bg-purple-100 rounded-full font-bold shadow-inner transition-colors border border-purple-300">
+                    Activities
+                </Link>
+                <Link to="/about" className="text-gray-600 hover:text-fuchsia-600 transition-colors flex items-center relative group">
+                    About
+                    <span className="absolute bottom-0 left-0 w-full h-0.5 bg-fuchsia-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                </Link>
+            </nav>
+
+            {/* CTA Button - Creative Gradient/Shadow */}
+            <Link 
+                to="/contact"
+                className="hidden md:inline-flex items-center px-6 py-2.5 bg-linear-to-r from-fuchsia-600 to-purple-600 text-white rounded-lg font-bold text-base 
+                           hover:from-fuchsia-700 hover:to-purple-700 transition-all duration-300 shadow-lg transform hover:-translate-y-0.5"
+            >
+                Connect <ArrowRight className="w-4 h-4 ml-2" />
+            </Link>
+
+            {/* Mobile Menu Icon (Placeholder) */}
+            <button className="md:hidden p-2 text-gray-700 rounded-lg hover:bg-gray-100 hover:text-fuchsia-600 transition-colors">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+    </header>
+);
+
+
+// ----------------------------------------------------------------------
+// 2. PROFESSIONAL & CREATIVE FOOTER COMPONENT (Added)
+// ----------------------------------------------------------------------
+
+const ProfessionalFooter: FC = () => (
+    <footer className="bg-gray-900 text-gray-300 relative overflow-hidden">
+        {/* Creative Abstract Background Shape */}
+        <div className="absolute top-0 left-0 w-1/4 h-full bg-purple-900 opacity-10 transform skew-y-3 -translate-x-1/4 hidden md:block"></div>
+        
+        <div className="max-w-7xl mx-auto py-16 px-6 sm:px-8 lg:px-12 relative z-10">
+            <div className="grid grid-cols-2 gap-y-12 gap-x-8 md:grid-cols-4 lg:gap-x-16">
+                
+                {/* 1. Logo/Mission StatementSS */}
+                <div className="col-span-2 md:col-span-1">
+                    <h3 className="text-4xl font-black text-white mb-4 tracking-tighter">GFM <span className="text-purple-400">Youth</span></h3>
+                    <p className="text-sm leading-relaxed mb-6 border-l-4 border-fuchsia-500 pl-3">
+                        Raising a generation of **purpose-driven leaders** manifesting the fullness of Christ's Reality.
+                    </p>
+                    {/* Social Links - Creative Ring Hover */}
+                    <div className="flex space-x-3">
+                        <a href="https://facebook.com/gfmyouth" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="p-2 border border-gray-700 rounded-full text-gray-400 hover:text-fuchsia-500 hover:border-fuchsia-500 transition-all duration-200">
+                            <Facebook className="w-5 h-5" />
+                        </a>
+                        <a href="https://twitter.com/gfmyouth" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="p-2 border border-gray-700 rounded-full text-gray-400 hover:text-fuchsia-500 hover:border-fuchsia-500 transition-all duration-200">
+                            <Twitter className="w-5 h-5" />
+                        </a>
+                        <a href="https://instagram.com/gfmyouth" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="p-2 border border-gray-700 rounded-full text-gray-400 hover:text-fuchsia-500 hover:border-fuchsia-500 transition-all duration-200">
+                            <Instagram className="w-5 h-5" />
+                        </a>
+                    </div>
+                </div>
+
+                {/* 2. Quick Links */}
+                <div>
+                    <h4 className="text-xl font-bold text-white mb-5 border-b-2 border-purple-600/50 pb-2">Quick Links</h4>
+                    <ul className="space-y-3 text-base">
+                        <li><Link to="/activities" className="hover:text-purple-400 transition-colors flex items-center"><ArrowRight className="w-4 h-4 mr-2 text-fuchsia-500" /> Activities</Link></li>
+                        <li><Link to="/sermons" className="hover:text-purple-400 transition-colors flex items-center"><ArrowRight className="w-4 h-4 mr-2 text-fuchsia-500" /> Sermons</Link></li>
+                        <li><Link to="/volunteer" className="hover:text-purple-400 transition-colors flex items-center"><ArrowRight className="w-4 h-4 mr-2 text-fuchsia-500" /> Volunteer</Link></li>
+                        <li><Link to="/contact" className="hover:text-purple-400 transition-colors flex items-center"><ArrowRight className="w-4 h-4 mr-2 text-fuchsia-500" /> Contact Us</Link></li>
+                    </ul>
+                </div>
+
+                {/* 3. Resources/Legal */}
+                <div>
+                    <h4 className="text-xl font-bold text-white mb-5 border-b-2 border-purple-600/50 pb-2">Legal & Info</h4>
+                    <ul className="space-y-3 text-base">
+                        <li><Link to="/about" className="hover:text-purple-400 transition-colors">Our Story</Link></li>
+                        <li><Link to="/privacy" className="hover:text-purple-400 transition-colors">Privacy Policy</Link></li>
+                        <li><Link to="/terms" className="hover:text-purple-400 transition-colors">Terms of Use</Link></li>
+                        <li><Link to="/faq" className="hover:text-purple-400 transition-colors">FAQs</Link></li>
+                    </ul>
+                </div>
+
+                {/* 4. Contact Information (Vertical Alignment) */}
+                <div>
+                    <h4 className="text-xl font-bold text-white mb-5 border-b-2 border-purple-600/50 pb-2">Get in Touch</h4>
+                    <address className="not-italic space-y-4 text-base">
+                        <div className="flex items-start">
+                            <Mail className="w-5 h-5 mr-3 mt-1 text-fuchsia-500 shrink-0" />
+                            <a href="mailto:info@gfmyouth.org" className="hover:text-purple-400 transition-colors border-b border-transparent hover:border-purple-400">houseofoperaworld@gmail.com</a>
+                        </div>
+                        <div className="flex items-start">
+                            <Phone className="w-5 h-5 mr-3 mt-1 text-fuchsia-500 shrink-0" />
+                            <a href="tel:+1234567890" className="hover:text-purple-400 transition-colors border-b border-transparent hover:border-purple-400">(+234)802 642 9018</a>
+                        </div>
+                        <div className="flex items-start">
+                            <Home className="w-5 h-5 mr-3 mt-1 text-fuchsia-500 shrink-0" />
+                            <p className="text-gray-400">Zarmaganda Diya, Off Rayfield Road, Jos Plateau State</p>
+                        </div>
+                    </address>
+                </div>
+            </div>
+            
+            {/* Copyright Line - More prominent and centered */}
+            <div className="mt-16 pt-8 border-t border-gray-800 text-center">
+                <p className="text-sm text-gray-500 font-medium">
+                    &copy; {new Date().getFullYear()} **GFM Youth Community**. All rights reserved. 
+                    <span className="ml-3 text-xs inline-flex items-center text-gray-600">
+                        Crafted with <Heart className="w-4 h-4 mx-1 text-red-500 animate-pulse" /> for the Future.
+                    </span>
+                </p>
+            </div>
         </div>
     </footer>
 );
 
-// --- STATIC DATA FOR ACTIVITIES/EVENTS ---
+// 3. STATIC DATA FOR ACTIVITIES/EVENTS 
 
 const UPCOMING_EVENTS = [
     {
         id: 1,
-        title: "Annual Youth Retreat: Ignite Your Purpose",
-        date: "Nov 22-24, 2025",
-        time: "Fri 5:00 PM - Sun 2:00 PM",
-        location: "Camp Zion, Abuja",
+        title: "ANNUAL YOUTH CONFERENCE: KAINOS ['Make All Things New']",
+        date: "Oct 25-26, 2025",
+        time: "Sat 3:00 PM - Sun 3:00 PM",
+        location: "Main Auditorium, Zarmaganda Jos",
         description: "A weekend of intensive spiritual growth, team building, and prophetic impartation. Don't miss this life-changing experience! The retreat includes detailed sessions on self-discovery, workshops on leadership, powerful worship experiences, and dedicated prayer times. Registration is mandatory and closes on November 1st.", // <-- Longer description for modal
-        imageUrl: "https://via.placeholder.com/600x400/9333ea/ffffff?text=YOUTH+RETREAT",
+        imageUrl: "src/assets/images/flyer.jpg", 
         isNew: true,
-        details: { // <-- Additional details for modal
-            cost: "₦15,000 (includes feeding & accommodation)",
-            contact: "Sis. Michelle (0801 234 5678)",
+        details: { 
+            cost: "Your Presence",
+            contact: "Managment (0801 234 5678)",
             registrationLink: "#register-retreat",
         }
     },
     {
         id: 2,
-        title: "Leadership Summit: Shaping Future Leaders",
-        date: "Oct 29, 2025",
+        title: "LEADERSHIP SUMMIT: Shaping Future Leaders",
+        date: "Nov 1st - 3rd, 2025",
         time: "9:00 AM - 4:00 PM",
-        location: "GFM Main Auditorium, Lagos",
+        location: "GLOBAL FLAME MAIN AUDITORIUM, Jos",
         description: "Empowering young leaders with practical skills, mentorship, and vision casting for impactful service in their spheres. Keynote speakers include Pastor Femi Adebayo and a panel of seasoned professionals.",
-        imageUrl: "https://via.placeholder.com/600x400/a855f7/ffffff?text=LEADERSHIP+SUMMIT",
+        imageUrl: "src/assets/images/slider2.jpg", 
         isNew: false,
         details: {
             cost: "Free (Registration Required)",
-            contact: "Bro. Benedict (0909 876 5432)",
+            contact: "0909 876 5432",
             registrationLink: "#register-summit",
         }
     },
     {
         id: 3,
-        title: "Community Outreach: Feeding the Hungry",
+        title: "COMMUNITY OUTREACH",
         date: "Dec 7, 2025",
         time: "10:00 AM - 2:00 PM",
-        location: "Central Market, Port Harcourt",
-        description: "Join us as we minister to the less privileged through food distribution and sharing the love of Christ. Volunteers are needed!",
-        imageUrl: "https://via.placeholder.com/600x400/c084fc/ffffff?text=OUTREACH+EVENT",
+        location: "GLOBAL FLAME AUDITORIUM, Plateau State",
+        description: "",
+        imageUrl: "src/assets/images/seated.jpg", 
         isNew: false,
         details: {
             cost: "Free (Donations Welcome)",
-            contact: "Bro. Jonathan (0812 345 6789)",
+            contact: "0812 345 6789",
             registrationLink: "#volunteer-outreach",
         }
     },
     {
         id: 4,
-        title: "Worship Night: 'Atmosphere of Grace'",
+        title: "IN HIS PRESENCE: 'Atmosphere of Grace'",
         date: "Nov 9, 2025",
-        time: "6:00 PM - 8:00 PM",
-        location: "GFM Youth Chapel, Enugu",
+        time: "3:00 PM Daily",
+        location: "GLOBAL FLAME AUDITORIUM",
         description: "An evening dedicated to unhindered praise and worship, inviting the presence of God for revival. Come expectant for a mighty move of God's Spirit.",
-        imageUrl: "https://via.placeholder.com/600x400/a78bfa/ffffff?text=WORSHIP+NIGHT",
+        imageUrl: "src/assets/images/deliver.jpg", 
         isNew: true,
         details: {
             cost: "Free",
-            contact: "Sis. Princess (0701 112 2334)",
+            contact: "0701 112 2334",
             registrationLink: "#register-worship",
         }
     },
@@ -93,25 +222,25 @@ const UPCOMING_EVENTS = [
 const PAST_EVENTS = [
     {
         id: 101,
-        title: "Career Mentorship Workshop",
-        date: "Aug 12, 2025",
-        imageUrl: "https://via.placeholder.com/400x300/f0abfc/000000?text=CAREER+WORKSHOP",
+        title: "LIGHT CONFERENCE",
+        date: "May 1st - 4th, 2025",
+        imageUrl: "src/assets/images/fly.jpg", 
     },
     {
         id: 102,
-        title: "Annual Sports Day",
-        date: "July 20, 2025",
-        imageUrl: "https://via.placeholder.com/400x300/e9d5ff/000000?text=SPORTS+DAY",
+        title: "BIRTHING OF NEW SEASONS (ABUJA CHAPTER)",
+        date: "Sept 26th - 28th, 2025",
+        imageUrl: "src/assets/images/fast.jpg", 
     },
     {
         id: 103,
-        title: "Bible Study Marathon",
-        date: "June 5, 2025",
-        imageUrl: "https://via.placeholder.com/400x300/d8b4fe/000000?text=BIBLE+STUDY",
+        title: "EXCEEDING GRACE",
+        date: "Dec 25th - 30th, 2024",
+        imageUrl: "src/assets/images/grace.jpg", 
     },
 ];
 
-// --- MODAL COMPONENT ---
+// --- MODAL COMPONENT (Unchanged) ---
 
 interface EventModalProps {
     event: UpcomingEvent;
@@ -184,7 +313,7 @@ const EventModal: FC<EventModalProps> = ({ event, onClose }) => {
 
                     {/* Contact and Action */}
                     <div className="pt-2">
-                         <p className="text-sm text-gray-500 mb-4">For immediate inquiries, contact: <span className="font-medium text-gray-700">{event.details.contact}</span></p>
+                            <p className="text-sm text-gray-500 mb-4">For immediate inquiries, contact: <span className="font-medium text-gray-700">{event.details.contact}</span></p>
 
                         <a 
                             href={event.details.registrationLink} 
@@ -201,14 +330,14 @@ const EventModal: FC<EventModalProps> = ({ event, onClose }) => {
     );
 };
 
-// --- EVENT CARD COMPONENT (UPDATED) ---
+// --- EVENT CARD COMPONENT (Unchanged functional logic) ---
 
 interface EventCardProps {
     event: UpcomingEvent;
-    onViewDetails: (event: UpcomingEvent) => void; // <-- New prop for click handler
+    onViewDetails: (event: UpcomingEvent) => void; 
 }
 
-const EventCard: FC<EventCardProps> = ({ event, onViewDetails }) => ( // <-- Destructure new prop
+const EventCard: FC<EventCardProps> = ({ event, onViewDetails }) => ( 
     <div className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 relative">
         <img src={event.imageUrl} alt={event.title} className="w-full h-48 object-cover" />
         {event.isNew && (
@@ -224,7 +353,7 @@ const EventCard: FC<EventCardProps> = ({ event, onViewDetails }) => ( // <-- Des
                 <p className="flex items-center"><Clock className="w-4 h-4 mr-2 text-purple-500" /> {event.time}</p>
                 <p className="flex items-center"><MapPin className="w-4 h-4 mr-2 text-indigo-500" /> {event.location}</p>
             </div>
-            {/* Changed <a> tag to <button> and added click handler */}
+            {/* Added click handler */}
             <button 
                 onClick={() => onViewDetails(event)} 
                 className="inline-flex items-center justify-center mt-auto px-6 py-2 bg-fuchsia-700 text-white font-semibold rounded-lg hover:bg-purple-800 transition-colors"
@@ -235,7 +364,7 @@ const EventCard: FC<EventCardProps> = ({ event, onViewDetails }) => ( // <-- Des
     </div>
 );
 
-// --- GALLERY CARD COMPONENT (Unchanged) ---
+// --- GALLERY CARD COMPONENT (Unchanged functional logic) ---
 interface PastEventCardProps {
     event: typeof PAST_EVENTS[0];
 }
@@ -257,7 +386,9 @@ const PastEventCard: FC<PastEventCardProps> = ({ event }) => (
 );
 
 
-// --- MAIN ACTIVITIES PAGE COMPONENT (UPDATED) ---
+// ----------------------------------------------------------------------
+// 4. MAIN ACTIVITIES PAGE COMPONENT (Updated with Header and Footer)
+// ----------------------------------------------------------------------
 
 const ActivitiesPage: FC = () => {
     // 2. STATE FOR MODAL
@@ -274,7 +405,10 @@ const ActivitiesPage: FC = () => {
     return (
         <div className="min-h-screen bg-gray-50 font-sans text-gray-800">
 
-            {/* 1. Hero Section */}
+            {/* PROFESSIONAL HEADER (ADDED) */}
+            <ProfessionalHeader />
+
+            {/* 1. Hero Section - Updated colors for visual continuity */}
             <section className="bg-linear-to-r from-purple-800 to-fuchsia-900 text-white py-24 px-6 text-center">
                 <div className="max-w-4xl mx-auto">
                     <h1 className="text-4xl md:text-6xl font-extrabold mb-4 leading-tight">
@@ -300,7 +434,6 @@ const ActivitiesPage: FC = () => {
                     
                     <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
                         {UPCOMING_EVENTS.map((event) => (
-                            // 3. Pass the handler to the EventCard
                             <EventCard key={event.id} event={event} onViewDetails={handleViewDetails} />
                         ))}
                     </div>
@@ -346,15 +479,15 @@ const ActivitiesPage: FC = () => {
                     <a 
                         href="/contact" 
                         className="inline-flex items-center justify-center px-10 py-4 bg-white text-fuchsia-700 rounded-full font-bold text-xl 
-                                   hover:bg-fuchsia-100 transition-colors shadow-lg transform hover:scale-105"
+                                 hover:bg-fuchsia-100 transition-colors shadow-lg transform hover:scale-105"
                     >
                         Contact Us to Participate
                     </a>
                 </div>
             </section>
 
-            {/* Footer Placeholder */}
-            <Footer />
+            {/* PROFESSIONAL FOOTER (REPLACED PLACEHOLDER) */}
+            <ProfessionalFooter />
 
             {/* 5. Render Modal Conditionally */}
             {selectedEvent && (

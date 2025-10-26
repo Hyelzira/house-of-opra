@@ -10,8 +10,26 @@ import {
     X, 
 } from 'lucide-react';
 
-// --- PLACEHOLDER COMPONENTS ---
+// --- MOCK IMAGE IMPORTS ---
+// NOTE: In a real project, these would be actual import statements:
+// import SpiritualGrowthImg from './assets/images/spiritual-growth.jpg';
+// import CareerGuidanceImg from './assets/images/career-guidance.jpg';
+// ... etc.
 
+// We will use string paths that match the assumed file names in your assets folder.
+const assetImages = {
+    'spiritual-growth.jpg': '/srcassets/images/pray.jpg', // Replace with actual import variable
+    'career-guidance.jpg': 'src/assets/images/dad.jpg',
+    'outreach-impact.jpg': 'src/assets/images/deliver.jpg',
+    'divine-purpose.jpg': 'src/assets/images/flan.jpg',
+    'financial-stewardship.jpg': 'src/assets/images/presence.jpg',
+    'testimony-feature.jpg': 'src/assets/images/dance.jpg',
+    'leadership-guide.jpg': 'src/assets/images/slider1.jpg',
+};
+// --------------------------
+
+// --- PLACEHOLDER COMPONENTS ---
+// ... (Footer component remains the same for this solution)
 const Footer: FC = () => (
     <footer className="bg-gray-900 text-gray-400 text-center py-8 px-6 text-sm">
         <div className="max-w-7xl mx-auto">
@@ -20,8 +38,8 @@ const Footer: FC = () => (
     </footer>
 );
 
-// --- STATIC DATA FOR BLOG POSTS ---
-// NOTE: I've added a 'tags' array to each post for more precise filtering demonstration.
+
+// --- STATIC DATA FOR BLOG POSTS (UPDATED IMAGE URLS) ---
 
 const BLOG_POSTS = [
     {
@@ -31,8 +49,9 @@ const BLOG_POSTS = [
         author: "Patience Okoro",
         date: "Oct 15, 2025",
         category: "Spiritual Life",
-        tags: ["#FaithJourney", "#YouthDevo", "#University"], // Added Tags
-        imageUrl: "https://via.placeholder.com/600x400/9333ea/ffffff?text=SPIRITUAL+GROWTH",
+        tags: ["#FaithJourney", "#YouthDevo", "#University"],
+        // Replaced placeholder with the filename key
+        imageUrl: 'spiritual-growth.jpg', 
     },
     {
         id: 2,
@@ -42,7 +61,7 @@ const BLOG_POSTS = [
         date: "Oct 8, 2025",
         category: "Career & Leadership",
         tags: ["#Leadership", "#Mentorship", "#Career"],
-        imageUrl: "https://via.placeholder.com/600x400/a855f7/ffffff?text=CAREER+GUIDANCE",
+        imageUrl: 'career-guidance.jpg',
     },
     {
         id: 3,
@@ -52,7 +71,7 @@ const BLOG_POSTS = [
         date: "Sept 30, 2025",
         category: "Community & Service",
         tags: ["#Community", "#Service", "#Outreach"],
-        imageUrl: "https://via.placeholder.com/600x400/c084fc/ffffff?text=OUTREACH+IMPACT",
+        imageUrl: 'outreach-impact.jpg',
     },
     {
         id: 4,
@@ -62,7 +81,7 @@ const BLOG_POSTS = [
         date: "Sept 22, 2025",
         category: "Spiritual Life",
         tags: ["#FaithJourney", "#DivinePurpose", "#YouthDevo"],
-        imageUrl: "https://via.placeholder.com/600x400/a78bfa/ffffff?text=DIVINE+PURPOSE",
+        imageUrl: 'divine-purpose.jpg',
     },
     {
         id: 5,
@@ -72,7 +91,7 @@ const BLOG_POSTS = [
         date: "Sept 15, 2025",
         category: "Financial Literacy",
         tags: ["#FinancialLiteracy", "#Stewardship"],
-        imageUrl: "https://via.placeholder.com/600x400/9a54ec/ffffff?text=FINANCIAL+STEWARDSHIP",
+        imageUrl: 'financial-stewardship.jpg',
     },
     {
         id: 6,
@@ -82,7 +101,7 @@ const BLOG_POSTS = [
         date: "Sept 1, 2025",
         category: "Testimonies",
         tags: ["#Testimony", "#Resilience"],
-        imageUrl: "https://via.placeholder.com/600x400/9333ea/ffffff?text=TESTIMONY+FEATURE",
+        imageUrl: 'testimony-feature.jpg',
     },
     {
         id: 7,
@@ -92,7 +111,7 @@ const BLOG_POSTS = [
         date: "Aug 20, 2025",
         category: "Career & Leadership",
         tags: ["#Leadership", "#Mentorship", "#AfricaYouth"],
-        imageUrl: "https://via.placeholder.com/600x400/a855f7/ffffff?text=LEADERSHIP+GUIDE",
+        imageUrl: 'leadership-guide.jpg',
     },
 ];
 
@@ -105,7 +124,8 @@ const CATEGORIES = [
     { name: "Testimonies", count: 1 }
 ];
 
-// --- POST GRID COMPONENT (Unchanged) ---
+
+// --- POST GRID COMPONENT (MODIFIED to use assetImages) ---
 
 interface PostCardProps {
     post: typeof BLOG_POSTS[0];
@@ -113,6 +133,11 @@ interface PostCardProps {
 }
 
 const PostCard: FC<PostCardProps> = ({ post, isFeatured }) => {
+    
+    // **MODIFICATION HERE: Get the correct image source from the map**
+    const imageSource = assetImages[post.imageUrl as keyof typeof assetImages] || post.imageUrl;
+
+
     const cardClasses = isFeatured
         ? "lg:col-span-2 flex flex-col md:flex-row bg-white rounded-xl shadow-2xl overflow-hidden border-t-8 border-fuchsia-600"
         : "bg-white rounded-xl shadow-lg overflow-hidden flex flex-col hover:shadow-xl transition-shadow duration-300";
@@ -127,7 +152,12 @@ const PostCard: FC<PostCardProps> = ({ post, isFeatured }) => {
 
     return (
         <article className={cardClasses}>
-            <img src={post.imageUrl} alt={post.title} className={imageClasses} />
+            {/* **MODIFICATION HERE: Use the dynamically resolved imageSource** */}
+            <img 
+                src={imageSource} 
+                alt={post.title} 
+                className={imageClasses} 
+            />
             <div className={contentClasses}>
                 <div className="flex items-center space-x-3 mb-2 text-sm text-fuchsia-600 font-semibold">
                     <Tag className="w-4 h-4" />
@@ -154,8 +184,8 @@ const PostCard: FC<PostCardProps> = ({ post, isFeatured }) => {
 };
 
 
-// --- MAIN BLOG PAGE COMPONENT (UPDATED) ---
-
+// --- MAIN BLOG PAGE COMPONENT (Unchanged Logic) ---
+// ... (The rest of the component remains the same as the image handling is only in the PostCard and data definition)
 const BlogPage: FC = () => {
     // 1. STATE FOR FILTERING
     const [searchTerm, setSearchTerm] = useState('');
@@ -222,7 +252,7 @@ const BlogPage: FC = () => {
     return (
         <div className="min-h-screen bg-gray-50 font-sans text-gray-800">
 
-            {/* 1. Hero Section (Unchanged) */}
+            {/* 1. Hero Section */}
             <section className="bg-linear-to-r from-purple-800 to-fuchsia-900 text-white py-24 px-6 text-center">
                 <div className="max-w-4xl mx-auto">
                     <h1 className="text-4xl md:text-6xl font-extrabold mb-4 leading-tight">
@@ -338,28 +368,28 @@ const BlogPage: FC = () => {
                         </div>
                         
                         {/* Popular Tags (UPDATED) */}
-                         <div className="p-6 bg-white rounded-xl shadow-lg border-t-4 border-fuchsia-600">
-                            <h3 className="text-xl font-bold mb-4 text-gray-900">Popular Tags</h3>
-                            <div className="flex flex-wrap gap-2">
-                                {ALL_TAGS.map(tag => {
-                                    const isTagActive = searchTerm.toLowerCase() === tag.replace(/#/g, '').toLowerCase();
+                           <div className="p-6 bg-white rounded-xl shadow-lg border-t-4 border-fuchsia-600">
+                                <h3 className="text-xl font-bold mb-4 text-gray-900">Popular Tags</h3>
+                                <div className="flex flex-wrap gap-2">
+                                    {ALL_TAGS.map(tag => {
+                                        const isTagActive = searchTerm.toLowerCase() === tag.replace(/#/g, '').toLowerCase();
 
-                                    return (
-                                        <button 
-                                            key={tag} 
-                                            onClick={() => handleTagClick(tag)}
-                                            className={`px-3 py-1 text-sm rounded-full transition-colors cursor-pointer 
-                                                ${isTagActive 
-                                                    ? 'bg-fuchsia-600 text-white font-semibold' 
-                                                    : 'bg-gray-200 text-gray-700 hover:bg-fuchsia-200 hover:text-fuchsia-800'}`
-                                            }
-                                        >
-                                            {tag}
-                                        </button>
-                                    );
-                                })}
+                                        return (
+                                            <button 
+                                                key={tag} 
+                                                onClick={() => handleTagClick(tag)}
+                                                className={`px-3 py-1 text-sm rounded-full transition-colors cursor-pointer 
+                                                    ${isTagActive 
+                                                        ? 'bg-fuchsia-600 text-white font-semibold' 
+                                                        : 'bg-gray-200 text-gray-700 hover:bg-fuchsia-200 hover:text-fuchsia-800'}`
+                                                }
+                                            >
+                                                {tag}
+                                            </button>
+                                        );
+                                    })}
+                                </div>
                             </div>
-                        </div>
                     </aside>
 
                 </div>
