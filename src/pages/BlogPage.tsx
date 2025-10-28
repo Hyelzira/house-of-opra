@@ -10,21 +10,16 @@ import {
     X, 
 } from 'lucide-react';
 
-// --- MOCK IMAGE IMPORTS ---
-// NOTE: In a real project, these would be actual import statements:
-// import SpiritualGrowthImg from './assets/images/spiritual-growth.jpg';
-// import CareerGuidanceImg from './assets/images/career-guidance.jpg';
-// ... etc.
 
 // We will use string paths that match the assumed file names in your assets folder.
 const assetImages = {
-    'spiritual-growth.jpg': '/srcassets/images/pray.jpg', // Replace with actual import variable
+    'spiritual-growth.jpg': 'src/assets/images/pray.jpg', // Replace with actual import variable
     'career-guidance.jpg': 'src/assets/images/dad.jpg',
-    'outreach-impact.jpg': 'src/assets/images/deliver.jpg',
+    'outreach-impact.jpg': 'src/assets/images/young.jpg',
     'divine-purpose.jpg': 'src/assets/images/flan.jpg',
     'financial-stewardship.jpg': 'src/assets/images/presence.jpg',
     'testimony-feature.jpg': 'src/assets/images/dance.jpg',
-    'leadership-guide.jpg': 'src/assets/images/slider1.jpg',
+    'leadership-guide.jpg': 'src/assets/images/zoom.jpg',
 };
 // --------------------------
 

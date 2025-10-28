@@ -43,16 +43,16 @@ const HomeHeader = () => {
           <span className="flex items-center space-x-2">
             <FiMail className="text-white" />
             <a
-              href="mailto:houseofoperaworld@gmail.com"
+              href="mailto:globalflameyouthcommunity@gmail.com"
               className="hover:none"
             >
-              houseofoperaworld@gmail.com
+              globalflameyouthcommunity@gmail.com
             </a>
           </span>
           <span className="flex items-center space-x-2">
             <FiPhone className="text-white" />
-            <a href="tel:+2348026429018" className="hover:none">
-              (+234)802 642 9018
+            <a href="tel:+2348136848041" className="hover:none">
+              (+234)813 684 8041
             </a>
           </span>
         </div>
@@ -208,13 +208,13 @@ const HomeHeader = () => {
                 <span className="flex items-center space-x-2">
                   <FiMail />
                   <a href="mailto:houseofoperaworld@gmail.com" className="hover:none">
-                    houseofoperaworld@gmail.com
+                  globalflameyouthcommunity@gmail.com
                   </a>
                 </span>
                 <span className="flex items-center space-x-2">
                   <FiPhone />
                   <a href="tel:+2348026429018" className="hover:none">
-                    (+234)802 642 9018
+                    (+234)813 684 8041
                   </a>
                 </span>
                 <div className="flex space-x-3 text-lg mt-2">

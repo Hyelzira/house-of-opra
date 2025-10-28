@@ -12,7 +12,6 @@ import benedictImg from '../assets/images/Ben.jpg';
 import ezekielImg from '../assets/images/isaiah.jpg';
 import princessImg from '../assets/images/prinx.jpg';
 import michelleImg from '../assets/images/michelle.jpg';
-// NOTE: existing names to the imported names in HomeCrew.tsx
 import preciousImg from '../assets/images/officials.jpg'; 
 import miracleImg from '../assets/images/miracle.jpg';
 import hyelziraImg from '../assets/images/hyelzira.jpg';
@@ -100,21 +99,21 @@ const GFM_YOUTH_HISTORY: HistoryCardProps[] = [
     {
         year: '1998',
         title: 'THE FOUNDATION',
-        description: 'It came to birth on the 25th December 1998 and was formally registered with the COOPERATE AFFAIRS COMMISSION (CAC) in 2007, under the provision of the Companies and Allied Matters Act (CAMA) with certificate of registration no. CAC/IT/NO.263303',
+        description: 'It came to birth on the 25th December 1998 and was formally registered with the COOPERATE AFFAIRS COMMISSION (CAC) in 2007, under the provision of the Companies and Allied Matters Act (CAMA) with certificate of registration no. CAC/IT/NO 263303',
         icon: Landmark,
         iconColor: 'text-purple-600',
     },
     {
         year: '2007', 
         title: 'ABOUT GLOBAL FLAME',
-        description: 'A commission called to restore the Glory of God to mankind in all nations of the workld through the apostolic and prophetic platforms.',
+        description: 'A commission called to restore the Glory of God to mankind in all nations of the world through the apostolic and prophetic platforms.',
         icon: Users,
         iconColor: 'text-fuchsia-600',
     },
     {
-        year: '2021',
+        year: '2024',
         title: 'BIRTHING OF THE COMMUINITY',
-        description: 'The birthing of the Global Flames Youths Community was on the 10th Nov. 2021 and has expands widely to the glory of the most high, branching out to different groups and having atleast 10+ members.',
+        description: 'The birthing of the Global Flames Youths Community was on the 10th Nov. 2024 and has expanded widely to the glory of the most high, branching out to different groups and having atleast 194+ members.',
         icon: BookOpen,
         iconColor: 'text-yellow-600',
     },
@@ -199,9 +198,9 @@ const ProfessionalFooter: FC = () => (
                 <div>
                     <h4 className="text-lg font-semibold text-white mb-4 border-b border-fuchsia-600 pb-1">Quick Links</h4>
                     <ul className="space-y-3 text-sm">
-                        <li><Link to="/events" className="hover:text-fuchsia-400 transition-colors">Events</Link></li>
-                        <li><Link to="/sermons" className="hover:text-fuchsia-400 transition-colors">Sermons</Link></li>
-                        <li><Link to="/volunteer" className="hover:text-fuchsia-400 transition-colors">Volunteer</Link></li>
+                        <li><Link to="/activities" className="hover:text-fuchsia-400 transition-colors">Activities</Link></li>
+                        <li><Link to="/team" className="hover:text-fuchsia-400 transition-colors">Team</Link></li>
+                        <li><Link to="/reviews" className="hover:text-fuchsia-400 transition-colors">Reviews</Link></li>
                         <li><Link to="/contact" className="hover:text-fuchsia-400 transition-colors">Contact Us</Link></li>
                     </ul>
                 </div>
@@ -354,7 +353,7 @@ const AboutPage: FC = () => {
                     <h2 className="text-2xl font-sm mb-6 text-gray-900">OUR MOTTO: Raising a people of power who will manifest the kingdom and the realities of the fullness
                         of Christ through the Holy Spirit.  </h2>
                     <p className="text-gray-700 max-w-3xl mx-auto text-lg leading-relaxed mb-12">
-                        MISSION:: Eminecse salvation of souls, equipping the saints and manifesting the kingdom
+                        MISSION:: Immense salvation of souls, equipping the saints and manifesting the kingdom
                         through the demonstration of the Holy Spirit Power.
                     </p>
                     <h2 className="text-5xl font-bold mb-10 text-gray-950">CORE VALUES</h2>

@@ -45,10 +45,10 @@ const HomeHero = () => {
       {/* Overlay content */}
       <div className="absolute inset-0 bg-purple-700/40 flex flex-col items-center justify-center text-center text-white px-4 font-['Algerian', 'sans-serif']">
         <h1 className="text-xl md:text-2xl font-bold mb-4">
-          RAISING A PEOPLE OF POWER WHO WILL MANIFEST THE KINGDOM THROUGH THE MINISTRY OF THE HOLY SPIRIT
+          RAISING A PEOPLE OF POWER WHO WILL MANIFEST THE KINGDOM AND THE REALITIES OF THE FULLNESS OF CHRIST THROUGH THE SPIRIT
         </h1>
         <p className="max-w-2xl mb-6 text-lg md:text-xl">
-          Transform your dreams into reality with us
+          Discipling nations into the measure of the stature of the fullness of christ.
         </p>
         <div className="flex space-x-4">
           <a href="/about" className="bg-fuchsia-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-purple-500 transition opacity-90 hover:opacity-100">
