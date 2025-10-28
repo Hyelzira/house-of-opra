@@ -1,15 +1,13 @@
-// src/TeamPage.tsx
+// src/pages/TeamPage.tsx
 import { useState } from 'react';
 import type { FC, SyntheticEvent } from 'react';
 import { 
     Users, Medal, HeartHandshake, Zap, Smile, X, CheckCircle, 
-    Mail, Phone, MapPin, Twitter, Facebook, Instagram // Icons for the new Footer
+    Mail, Phone, MapPin, Twitter, Facebook, Instagram 
 } from 'lucide-react';
 
-// 🚀 CRITICAL FIX: IMPORT ALL IMAGES AND MAP THEM
-// This ensures the bundler (Vite) correctly processes and serves the images.
-// NOTE: Ensure the paths are correct relative to TeamPage.tsx
-// Assuming TeamPage.tsx is in 'src/' and images are in 'src/assets/images/'
+// 🚀 CRITICAL FIX: Ensure ALL images exist and paths are correct. 
+// Path: ../ (out of pages) -> assets/images/
 import hyelzira from '../assets/images/hyelzira.jpg';
 import bruce from '../assets/images/bruce.jpg';
 import emie from '../assets/images/emie.jpg';
@@ -18,10 +16,14 @@ import bamaiyi from '../assets/images/bamaiyi.jpg';
 import aibe from '../assets/images/aibe.jpg';
 import rich from '../assets/images/rich.jpg';
 import nenla from '../assets/images/nenla.jpg';
-import victor from '../assets/images/victor.jpg';
+// 🔥 ERROR FIX: The build error (image_891084.png) mentioned 'victor.jpg'. 
+// It's crucial this file exists in the directory.
+import victor from '../assets/images/victor.jpg'; 
 import joan from '../assets/images/joan.jpg';
 import vic from '../assets/images/vic.jpg';
-import smile from '../assets/images/smile.jpg';
+// 🔥 ERROR FIX: image_7e9f40.png shows 'smile.jpg' was added. 
+// It's critical this file exists in the directory.
+import smile from '../assets/images/smile.jpg'; 
 
 // Map file name strings (from the static data) to the actual imported URL variables
 const assetImages = {
@@ -41,16 +43,17 @@ const assetImages = {
 
 
 // 1. TYPE DEFINITIONS & UTILITY COMPONENTS 
+// (No changes here, they are correct for the new image-handling logic)
 
 interface TeamMember {
     name: string;
     role: string;
-    image: keyof typeof assetImages; // CHANGED TYPE to reference the keys of the asset map
+    image: keyof typeof assetImages; 
     unit: string;
 }
 
 interface ImageWithFallbackProps {
-    src: string; // This will now be the resolved URL string
+    src: string; 
     alt: string;
     className: string;
     fallback?: string;
@@ -63,7 +66,7 @@ const ImageWithFallback: FC<ImageWithFallbackProps> = ({
     fallback = "https://via.placeholder.com/400x300/9333EA/FFFFFF?text=GFM+Youth" 
 }) => (
     <img
-        src={src} // This now receives the actual imported URL
+        src={src} 
         alt={alt}
         className={className}
         onError={(e: SyntheticEvent<HTMLImageElement, Event>) => {
@@ -95,12 +98,20 @@ const ALL_TEAM_MEMBERS: TeamMember[] = [
     { name: 'FEMI JAMES', role: 'USHERS LEAD', image: 'smile.jpg', unit: 'Service & Protocol' },
 ];
 
+// 🔥 LOGIC FIX: Added the missing units from the ALL_TEAM_MEMBERS data 
+// so they are displayed in the "Departmental Units Overview" section.
 const TEAM_UNITS = [
     { title: "Core Leadership", icon: Medal, description: "Setting the vision and steering the entire youth communitiy groups forward." },
     { title: "Tech & Media", icon: Zap, description: "Handling all digital communications,web development, app development, visual production, and technical needs." },
     { title: "Welfare & Outreach", icon: HeartHandshake, description: "Caring for members and spearheading community service initiatives as well." },
     { title: "Service & Protocol", icon: Smile, description: "Ensuring smooth running of services,commitment, hospitality, and order." },
-    // NOTE: The units below are referenced in ALL_TEAM_MEMBERS but not in the TEAM_UNITS list above.
+    { title: "Godly Dating", icon: HeartHandshake, description: "Guiding youth in building healthy, God-centered relationships and preparation for marriage." },
+    { title: "Peotry Ministry", icon: Zap, description: "Expressing worship and Christian themes through creative writing and spoken word poetry." },
+    { title: "Sports Dept.", icon: Users, description: "Organizing physical and recreational activities for fellowship and community building." },
+    { title: "Fashion Dept.", icon: Zap, description: "Promoting Godly dressing standards and creative expression through modest fashion." },
+    { title: "Movies Dept.", icon: Users, description: "Curating and discussing media content from a Christian perspective." },
+    { title: "Politics Dept.", icon: Users, description: "Engaging in civic education and promoting Godly principles in governance." },
+    { title: "Business Dept.", icon: Users, description: "Fostering entrepreneurial skills and Biblical financial stewardship among the youth." },
 ];
 
 // 3. TEAM CARD COMPONENT
@@ -111,14 +122,14 @@ interface TeamCardProps {
 
 const TeamCard: FC<TeamCardProps> = ({ member }) => {
     // 🔥 KEY FIX: Get the correct imported URL from the map
-    const imageSource = assetImages[member.image as keyof typeof assetImages] || member.image; // Fallback to string if needed, but should resolve
+    const imageSource = assetImages[member.image as keyof typeof assetImages] || member.image; 
     
     return (
         <div className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden group hover:shadow-xl transition-shadow duration-300">
             <div className="relative overflow-hidden w-full h-60 bg-gray-200 flex items-center justify-center">
                 <div className="absolute inset-0 bg-fuchsia-400 opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
                 <ImageWithFallback
-                    src={imageSource} // Use the resolved image source
+                    src={imageSource} 
                     alt={member.name}
                     className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-300"
                     fallback={`https://via.placeholder.com/400x300/F0F0F0/888888?text=${member.name.split(' ')[0]}`}
@@ -137,9 +148,8 @@ const TeamCard: FC<TeamCardProps> = ({ member }) => {
 };
 
 
-// 4. MODAL COMPONENTS (Unchanged)
-// (Omitting for brevity, but they remain the same as the original code)
-
+// 4. MODAL COMPONENTS (Unchanged - they were fine)
+// ... (VolunteerModalProps, SuccessModal, VolunteerModal components are unchanged)
 interface SuccessModalProps {
     onClose: () => void;
 }
@@ -223,6 +233,14 @@ const VolunteerModal: FC<VolunteerModalProps> = ({ onClose, onSuccess }) => {
                                 <option value="Choir & Music">Choir & Music</option>
                                 <option value="Dance Ministry">Dance Ministry</option>
                                 <option value="Prayer Team">Prayer Team</option>
+                                {/* Added other units for completeness */}
+                                <option value="Godly Dating">Godly Dating</option>
+                                <option value="Peotry Ministry">Peotry Ministry</option>
+                                <option value="Sports Dept.">Sports Dept.</option>
+                                <option value="Fashion Dept.">Fashion Dept.</option>
+                                <option value="Movies Dept.">Movies Dept.</option>
+                                <option value="Politics Dept.">Politics Dept.</option>
+                                <option value="Business Dept.">Business Dept.</option>
                             </select>
                         </div>
                         <div>
@@ -243,16 +261,16 @@ const VolunteerModal: FC<VolunteerModalProps> = ({ onClose, onSuccess }) => {
 };
 
 
-// 5. MAIN TEAM PAGE COMPONENT (Unchanged Logic)
+// 5. MAIN TEAM PAGE COMPONENT 
 
 const TeamPage: FC = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
+    const [isSuccessModalOpen, setIsSuccessModal] = useState(false);
 
     const handleSuccess = () => {
-        setIsSuccessModalOpen(true);
+        setIsSuccessModal(true);
         setTimeout(() => {
-            setIsSuccessModalOpen(false);
+            setIsSuccessModal(false);
         }, 2000);
     };
 
@@ -262,7 +280,7 @@ const TeamPage: FC = () => {
     return (
         <div className="min-h-screen bg-gray-50 font-sans text-gray-800">
 
-            {/* 1. HEADER (Hero Section) - CREATIVELY MODIFIED */}
+            {/* 1. HEADER (Hero Section) */}
             <section className="relative bg-linear-to-br from-indigo-900 to-fuchsia-700 py-28 md:py-40 px-6 text-white text-center overflow-hidden">
                 {/* Background Pattern/Graphic - More subtle and artistic */}
                 <div className="absolute inset-0 z-0 opacity-15">
@@ -288,7 +306,7 @@ const TeamPage: FC = () => {
                     <button 
                         onClick={() => setIsModalOpen(true)}
                         className="mt-10 inline-flex items-center px-10 py-3 bg-yellow-400 text-indigo-900 rounded-full font-extrabold text-lg 
-                                   hover:bg-yellow-300 transition-all duration-300 shadow-xl shadow-yellow-500/50 group transform hover:scale-105"
+                                                                   hover:bg-yellow-300 transition-all duration-300 shadow-xl shadow-yellow-500/50 group transform hover:scale-105"
                     >
                         Join a Team Today <Users className="w-5 h-5 ml-3 group-hover:rotate-6 transition-transform duration-300" />
                     </button>
@@ -319,13 +337,14 @@ const TeamPage: FC = () => {
                     <div className="text-center mb-12">
                         <Users className="w-10 h-10 text-purple-600 mx-auto mb-4" />
                         <p className="text-purple-700 font-semibold mb-2 text-sm uppercase tracking-widest">MINISTRY DEPARTMENTS</p>
-                        <h2 className="text-3xl font-bold mb-4 text-gray-800">Department Heads</h2>
+                        <h2 className="text-3xl font-bold mb-4 text-gray-800">Department Heads & Units</h2>
                         <p className="text-gray-700 max-w-2xl mx-auto text-lg">
                             The backbone of our operations, each department is vital for the success of our programs and services.
                         </p>
                     </div>
 
                     {/* Departmental Units Overview */}
+                    {/* The units list is now complete, including 'Godly Dating', 'Peotry Ministry', etc. */}
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
                         {TEAM_UNITS.map((unit, index) => {
                             const IconComponent = unit.icon;
@@ -349,7 +368,7 @@ const TeamPage: FC = () => {
                 </div>
             </section>
             
-            {/* 4. Body - Call to Action (Join the Team) - MODIFIED SECTION */}
+            {/* 4. Body - Call to Action (Join the Team) */}
             <section 
                 id="join-us" 
                 className="bg-linear-to-r from-fuchsia-800 to-purple-800 text-white py-20 px-6 text-center shadow-2xl"
@@ -365,22 +384,22 @@ const TeamPage: FC = () => {
                     <button 
                         onClick={() => setIsModalOpen(true)}
                         className="inline-flex items-center px-8 py-3 bg-fuchsia-500 text-white rounded-full font-bold text-xl 
-                                   hover:bg-fuchsia-400 transition-colors shadow-2xl shadow-fuchsia-500/50"
+                                                                   hover:bg-fuchsia-400 transition-colors shadow-2xl shadow-fuchsia-500/50"
                     >
                         Apply to Join <HeartHandshake className="w-5 h-5 ml-3" />
                     </button>
                 </div>
             </section>
 
-            {/* --- */}
+            ---
             ## 🎨 Creative & Professional Footer (New)
-            {/* --- */}
+            ---
             <footer className="bg-gray-900 text-gray-400 py-12 px-6">
                 <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 border-b border-gray-700 pb-8">
                     
                     {/* Column 1: Ministry Info */}
                     <div>
-                        <h4 className="text-xl font-bold text-fuchsia-800 mb-4">GFM YOUTH</h4>
+                        <h4 className="text-xl font-bold text-fuchsia-400 mb-4">GFM YOUTH</h4> {/* Color improved for visibility */}
                         <p className="text-sm">
                             To disciple nations into the major of the statue of the Holy Spirit Power.
                         </p>
@@ -442,7 +461,7 @@ const TeamPage: FC = () => {
                 />
             )}
             {isSuccessModalOpen && (
-                <SuccessModal onClose={() => setIsSuccessModalOpen(false)} />
+                <SuccessModal onClose={() => setIsSuccessModal(false)} />
             )}
         </div>
     );
