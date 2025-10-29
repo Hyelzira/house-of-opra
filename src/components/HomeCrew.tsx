@@ -1,6 +1,6 @@
 import danjumaImg from "../assets/images/dad.jpg";
 import faithImg from "../assets/images/mum.jpg";
-import benedictImg from "../assets/images/Ben.jpg";
+import benedictImg from "../assets/images/ben.jpg";
 import isaiahImg from "../assets/images/isaiah.jpg";
 import michImg from "../assets/images/michelle.jpg";
 import panImg from "../assets/images/HOOI.jpg";

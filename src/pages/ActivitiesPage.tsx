@@ -81,7 +81,7 @@ const ProfessionalFooter: FC = () => (
                 
                 {/* 1. Logo/Mission StatementSS */}
                 <div className="col-span-2 md:col-span-1">
-                    <h3 className="text-4xl font-black text-white mb-4 tracking-tighter">GFM <span className="text-purple-400">Youth</span></h3>
+                    <h3 className="text-2xl font-black text-white mb-3 tracking-tighter">GFM <span className="text-fuchsia-700">Youth</span></h3>
                     <p className="text-sm leading-relaxed mb-6 border-l-4 border-fuchsia-500 pl-3">
                         Raising a generation of **purpose-driven leaders** manifesting the fullness of Christ's Reality.
                     </p>
@@ -127,7 +127,7 @@ const ProfessionalFooter: FC = () => (
                     <address className="not-italic space-y-4 text-base">
                         <div className="flex items-start">
                             <Mail className="w-5 h-5 mr-3 mt-1 text-fuchsia-500 shrink-0" />
-                            <a href="mailto:info@gfmyouth.org" className="hover:text-purple-400 transition-colors border-b border-transparent hover:border-purple-400">houseofoperaworld@gmail.com</a>
+                            <a href="mailto:globalflameyouthcommunity@gmail.com" className="hover:text-purple-400 transition-colors border-b border-transparent hover:border-purple-400">houseofoperaworld@gmail.com</a>
                         </div>
                         <div className="flex items-start">
                             <Phone className="w-5 h-5 mr-3 mt-1 text-fuchsia-500 shrink-0" />
@@ -168,7 +168,7 @@ const UPCOMING_EVENTS = [
         isNew: true,
         details: { 
             cost: "Your Presence",
-            contact: "Managment (0801 234 5678)",
+            contact: "0801 234 5678",
             registrationLink: "#register-retreat",
         }
     },
@@ -469,19 +469,19 @@ const ActivitiesPage: FC = () => {
             </section>
             
             {/* 4. Call to Action (Participate / Contact) */}
-            <section className="bg-fuchsia-700 text-white py-16 px-6 text-center">
+            <section className="bg-fuchsia-800 text-white py-16 px-6 text-center">
                 <div className="max-w-3xl mx-auto">
-                    <Sparkles className="w-12 h-12 mx-auto mb-4 text-white" />
-                    <h2 className="text-3xl md:text-4xl font-bold mb-4">Be Part of the Next Big Thing!</h2>
-                    <p className="text-lg opacity-90 mb-8">
+                    <Sparkles className="w-8 h-8 mx-auto mb-3 text-white" />
+                    <h2 className="text-3xl md:text-3xl font-bold mb-3">Be Part of the Next Big Thing!</h2>
+                    <p className="text-lg opacity-80 mb-6">
                         Your presence makes a difference. Join us in our upcoming activities and experience growth and fellowship.
                     </p>
                     <a 
                         href="/contact" 
-                        className="inline-flex items-center justify-center px-10 py-4 bg-white text-fuchsia-700 rounded-full font-bold text-xl 
+                        className="inline-flex items-center justify-center px-8 py-3 bg-white text-fuchsia-700 rounded-full font-bold text-xl 
                                  hover:bg-fuchsia-100 transition-colors shadow-lg transform hover:scale-105"
                     >
-                        Contact Us to Participate
+                        Join Us To Partake
                     </a>
                 </div>
             </section>

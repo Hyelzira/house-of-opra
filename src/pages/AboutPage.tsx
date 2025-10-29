@@ -8,7 +8,7 @@ import {
 
 // ----------------------------------------------------------------------
 // ----------------------------------------------------------------------
-import benedictImg from '../assets/images/Ben.jpg';
+import benedictImg from '../assets/images/ben.jpg';
 import ezekielImg from '../assets/images/isaiah.jpg';
 import princessImg from '../assets/images/prinx.jpg';
 import michelleImg from '../assets/images/michelle.jpg';

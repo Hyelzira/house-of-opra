@@ -295,11 +295,11 @@ const CreativeFooter: FC = () => {
                             </div>
                             <div className="flex items-center">
                                 <Mail className="w-5 h-5 mr-3 text-fuchsia-500" />
-                                <p>houseofoperaworld@gmail.com</p>
+                                <p>globalflameyouthcommunity@gmail.com</p>
                             </div>
                             <div className="flex items-center">
                                 <Phone className="w-5 h-5 mr-3 text-fuchsia-500" />
-                                <p>+234 802 642 9018</p>
+                                <p>+234 813 684 8041</p>
                             </div>
                         </div>
                     </div>

@@ -43,8 +43,8 @@ const ProfessionalHeader: FC = () => (
                 <Link to="/services" className="px-3 py-1 text-fuchsia-700 bg-fuchsia-100 rounded-full font-bold shadow-inner transition-colors border border-fuchsia-300">
                     Services
                 </Link>
-                <Link to="/events" className="text-gray-600 hover:text-fuchsia-600 transition-colors flex items-center relative group">
-                    Events
+                <Link to="/team" className="text-gray-600 hover:text-fuchsia-600 transition-colors flex items-center relative group">
+                    Team
                     <span className="absolute bottom-0 left-0 w-full h-0.5 bg-fuchsia-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
                 </Link>
             </nav>
@@ -80,9 +80,9 @@ const ProfessionalFooter: FC = () => (
                 
                 {/* 1. Logo/Mission Statement (Enhanced) */}
                 <div className="col-span-2 md:col-span-1">
-                    <h3 className="text-4xl font-black text-white mb-4 tracking-tighter">GFM <span className="text-fuchsia-400">Youth</span></h3>
-                    <p className="text-sm leading-relaxed mb-6 border-l-4 border-fuchsia-500 pl-3">
-                        Raising a generation of **purpose-driven leaders** manifesting the fullness of Christ's Reality.
+                    <h3 className="text-3xl font-black text-white mb-3 tracking-tighter">GFM <span className="text-fuchsia-700">Youth</span></h3>
+                    <p className="text-sm leading-relaxed mb-5 border-l-4 border-fuchsia-500 pl-3">
+                        Raising a generation of *purpose-driven leaders* manifesting the fullness of Christ's Reality.
                     </p>
                     {/* Social Links - Creative Ring Hover */}
                     <div className="flex space-x-3">
@@ -102,9 +102,9 @@ const ProfessionalFooter: FC = () => (
                 <div>
                     <h4 className="text-xl font-bold text-white mb-5 border-b-2 border-fuchsia-600/50 pb-2">Quick Links</h4>
                     <ul className="space-y-3 text-base">
-                        <li><Link to="/events" className="hover:text-fuchsia-400 transition-colors flex items-center"><ArrowRight className="w-4 h-4 mr-2 text-fuchsia-500" /> Events</Link></li>
-                        <li><Link to="/sermons" className="hover:text-fuchsia-400 transition-colors flex items-center"><ArrowRight className="w-4 h-4 mr-2 text-fuchsia-500" /> Sermons</Link></li>
-                        <li><Link to="/volunteer" className="hover:text-fuchsia-400 transition-colors flex items-center"><ArrowRight className="w-4 h-4 mr-2 text-fuchsia-500" /> Volunteer</Link></li>
+                        <li><Link to="/team" className="hover:text-fuchsia-400 transition-colors flex items-center"><ArrowRight className="w-4 h-4 mr-2 text-fuchsia-500" /> Team</Link></li>
+                        <li><Link to="/activities" className="hover:text-fuchsia-400 transition-colors flex items-center"><ArrowRight className="w-4 h-4 mr-2 text-fuchsia-500" /> Activities</Link></li>
+                        <li><Link to="/blog" className="hover:text-fuchsia-400 transition-colors flex items-center"><ArrowRight className="w-4 h-4 mr-2 text-fuchsia-500" /> Blog</Link></li>
                         <li><Link to="/contact" className="hover:text-fuchsia-400 transition-colors flex items-center"><ArrowRight className="w-4 h-4 mr-2 text-fuchsia-500" /> Contact Us</Link></li>
                     </ul>
                 </div>
@@ -135,7 +135,7 @@ const ProfessionalFooter: FC = () => (
                         <div className="flex items-start">
                             {/* Icon for Location/Map-Pin could be used here, but using a placeholder for simplicity */}
                             <Home className="w-5 h-5 mr-3 mt-1 text-fuchsia-500 shrink-0" />
-                            <p className="text-gray-400">123 Purpose St, Leadership City, Global 00001</p>
+                            <p className="text-gray-400">Zarmaganda Diye, Off Rayfield Road, Jos Plateau State</p>
                         </div>
                     </address>
                 </div>
@@ -233,12 +233,12 @@ const ServicesPage: FC = () => {
             {/* 2. Hero Section - Creative Gradient Background */}
             <section className="bg-linear-to-br from-fuchsia-800 to-purple-900 text-white py-24 px-6 text-center shadow-inner">
                 <div className="max-w-4xl mx-auto">
-                    <h1 className="text-4xl md:text-6xl font-black mb-4 leading-tight uppercase">
+                    <h1 className="text-3xl md:text-4xl font-black mb-4 leading-tight uppercase">
                         <span className="block text-fuchsia-300 text-lg uppercase tracking-widest mb-2 font-extrabold">Service Pillars</span>
-                        Building Lives of **Power & Purpose**
+                        Building Lives of *Power & Purpose*
                     </h1>
                     <p className="text-lg md:text-xl font-light opacity-95 max-w-2xl mx-auto border-t border-fuchsia-400 pt-4">
-                        We don't just offer activities — we provide **transformational pathways**. Explore our comprehensive services designed to nurture the person: Spirit, Mind, and Body.
+                        We don't just offer activities — we provide *transformational pathways*. Explore our comprehensive communities designed to nurture the person: Spirit, Mind, and Body.
                     </p>
                     <Link 
                         to="/contact" 
@@ -323,19 +323,19 @@ const ServicesPage: FC = () => {
             </section>
 
             {/* 5. Call to Action - Focused and Bold */}
-            <section className="bg-purple-900 text-white py-12 px-4 text-center">
-                <div className="max-w-3xl mx-auto">
-                    <h2 className="text-3xl font-black mb-4">Don't Wait For Change. **Be The Change.**</h2>
-                    <p className="text-lg opacity-80 mb-4 font-light">
+            <section className="bg-purple-900 text-white py-10 px-3 text-center">
+                <div className="max-w-2xl mx-auto">
+                    <h2 className="text-2xl font-black mb-3">Don't Wait For Change. **Be The Change.**</h2>
+                    <p className="text-meduim opacity-80 mb-4 font-light">
                         Take the decisive step toward realizing your full, God-given potential. Our community is waiting to empower and enrich you.
                     </p>
                     <Link 
                         to="/contact" 
-                        className="inline-flex items-center justify-center px-7 py-4 bg-fuchsia-600 text-white rounded-full font-bold text-xl 
+                        className="inline-flex items-center justify-center px-6 py-3 bg-fuchsia-600 text-white rounded-full font-bold text-xl 
                                  hover:bg-purple-600 transition-colors shadow-2xl"
                     >
-                        Sign Up for a Program Today!
-                        <ArrowRight className="w-6 h-6 ml-3" />
+                        Join Us Live Today!
+                        <ArrowRight className="w-5 h-5 ml-3" />
                     </Link>
                 </div>
             </section>
