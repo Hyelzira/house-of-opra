@@ -8,25 +8,14 @@ import {
 
 // ----------------------------------------------------------------------
 // ----------------------------------------------------------------------
-import benedictImg from '../assets/images/ben.jpg';
-import ezekielImg from '../assets/images/isaiah.jpg';
-import princessImg from '../assets/images/prinx.jpg';
-import michelleImg from '../assets/images/michelle.jpg';
-import preciousImg from '../assets/images/officials.jpg'; 
-import miracleImg from '../assets/images/miracle.jpg';
-import hyelziraImg from '../assets/images/hyelzira.jpg';
-import israelImg from '../assets/images/bruce.jpg'; 
-import nenleImg from '../assets/images/HOOI.jpg'; 
-import jesseImg from '../assets/images/jesse.jpg'; 
-import joshImg from '../assets/images/joshua.jpg'; 
-import desImg from '../assets/images/desmond.jpg'; 
 
 // 2. TYPE DEFINITIONS & STATIC DATA
 
 interface Leader {
     name: string;
     role: string;
-    image: any; 
+    // Type is now 'string' since we use absolute paths
+    image: string; 
 }
 
 interface FeatureItemProps {
@@ -51,27 +40,27 @@ interface ImageWithFallbackProps {
     fallback?: string;
 }
 
-// CRITICAL: Define the base path for assets. Keeping this for non-imported assets/fallbacks.
-const ASSET_PATH = '/assets/images/'; 
+// CRITICAL: Define the base path for assets. This path MUST match where the images are placed 
+// in your 'public' folder (e.g., public/images/ben.jpg).
+const ASSET_PATH = '/images/'; 
 
 const LEADERSHIP_TEAM: Leader[] = [
-    // Paths now use imported variables (benedictImg, ezekielImg, etc.)
-    { name: 'BENEDICT DANIEL', role: 'UNIT HEAD GFM YOUTHS', image: benedictImg },
-    { name: 'EZEKIEL ISAIAH', role: 'ASST. UNIT HEAD GFM YOUTHS', image: ezekielImg },
-    { name: 'USIGBE PRINCESS', role: 'FIN. SECRETARY GFM YOUTHS', image: princessImg },
-    { name: 'AJIK MICHELLE', role: 'ADMIN UNIT GFM YOUTHS', image: michelleImg },
-    { name: 'NANLE PANMUN', role: 'ASST. ADMIN GFM YOUTHS', image: nenleImg },
-    { name: 'MAHLULE PRECIOUS', role: 'WELFARE COORDINATOR GFM YOUTHS', image: preciousImg },
-    { name: 'JONATHAN MIRACLE', role: 'DANCE DIRECTOR GFM YOUTHS', image: miracleImg },
-    { name: 'WAKAWA HYELZIRA', role: 'WEB DEVELOPER/TECH DIRECTOR', image: hyelziraImg },
-    { name: 'AMBRUCE ISRAEL', role: 'MEDIA DIRECTOR GFM YOUTHS', image: israelImg },
-    { name: 'MAIMAKO JESSE', role: 'MUSIC/SOUND DIRECTOR GFM YOUTHS', image: jesseImg },
-    { name: 'BITRUS JOSHUA DANG', role: 'CREATIVE DESIGNER GFM YOUTHS', image: joshImg },
-    { name: 'KUBA DESMOND', role: 'POLITICAL DIRECTOR GFM YOUTHS', image: desImg },
+    // ABSOLUTE PATHS: These paths are correct for accessing files in the public/images folder.
+    { name: 'BENEDICT DANIEL', role: 'UNIT HEAD GFM YOUTHS', image: 'src/assets/images/ben.jpg' },
+    { name: 'EZEKIEL ISAIAH', role: 'ASST. UNIT HEAD GFM YOUTHS', image: 'src/assets/images/isaiah.jpg' },
+    { name: 'USIGBE PRINCESS', role: 'FIN. SECRETARY GFM YOUTHS', image: 'src/assets/images/prinx.jpg' },
+    { name: 'AJIK MICHELLE', role: 'ADMIN UNIT GFM YOUTHS', image: 'src/assets/images/michelle.jpg' },
+    { name: 'NANLE PANMUN', role: 'ASST. ADMIN GFM YOUTHS', image: 'src/assets/images/HOOI.jpg' },
+    { name: 'MAHLULE PRECIOUS', role: 'WELFARE COORDINATOR GFM YOUTHS', image: 'src/assets/images/officials.jpg' },
+    { name: 'JONATHAN MIRACLE', role: 'DANCE DIRECTOR GFM YOUTHS', image: 'src/assets/images/miracle.jpg' },
+    { name: 'WAKAWA HYELZIRA', role: 'WEB DEVELOPER/TECH DIRECTOR', image: 'src/assets/images/hyelzira.jpg' },
+    { name: 'AMBRUCE ISRAEL', role: 'MEDIA DIRECTOR GFM YOUTHS', image: 'src/assets/images/bruce.jpg' },
+    { name: 'MAIMAKO JESSE', role: 'MUSIC/SOUND DIRECTOR GFM YOUTHS', image: 'src/assets/images/jesse.jpg' },
+    { name: 'BITRUS JOSHUA DANG', role: 'CREATIVE DESIGNER GFM YFM YOUTHS', image: 'src/assets/images/joshua.jpg' },
+    { name: 'KUBA DESMOND', role: 'POLITICAL DIRECTOR GFM YOUTHS', image: 'src/assets/images/desmond.jpg' },
 ];
 
 const MISSION_GOALS = [
-    // ... (MISSION_GOALS array remains the same)
     {
         icon: Lightbulb,
         title: "Hope for the hopeless",
@@ -125,15 +114,17 @@ const ImageWithFallback: FC<ImageWithFallbackProps> = ({
     src, 
     alt, 
     className, 
-    // Fallback uses the public ASSET_PATH
+    // Fallback uses the public ASSET_PATH for consistency
     fallback = `${ASSET_PATH}default-profile.jpg` 
 }) => (
     <img
         src={src}
         alt={alt}
         className={className}
+        // This handles cases where the main image path is broken
         onError={(e: SyntheticEvent<HTMLImageElement, Event>) => {
             console.log(`Failed to load: ${src}. Falling back to: ${fallback}`); // Helpful debug log
+            // Prevent infinite loop if the fallback also fails
             (e.target as HTMLImageElement).onerror = null; 
             (e.target as HTMLImageElement).src = fallback;
         }}
@@ -169,7 +160,6 @@ const HistoryCard: FC<HistoryCardProps> = ({ year, title, description, icon: Ico
 // 4. FOOTER COMPONENT
 
 const ProfessionalFooter: FC = () => (
-    // ... (ProfessionalFooter component)
     <footer className="bg-gray-900 text-gray-300">
         <div className="max-w-7xl mx-auto py-16 px-6 sm:px-8 lg:px-12">
             <div className="grid grid-cols-2 gap-y-10 gap-x-6 md:grid-cols-4 lg:gap-x-12">
@@ -304,9 +294,9 @@ const AboutPage: FC = () => {
                         </div>
                     </div>
                     <div className="order-1 md:order-2">
-                        {/* Image path still uses public path, which is fine if not imported */}
+                        {/* Main Mission Image */}
                         <ImageWithFallback
-                            src={'/assets/image/deliver.jpg'} 
+                            src={'/images/deliver.jpg'} 
                             alt="Youth engaging in mission"
                             className="w-full h-auto rounded-3xl shadow-2xl border-4 border-fuchsia-400"
                             fallback={`${ASSET_PATH}default-mission.jpg`}
@@ -315,7 +305,7 @@ const AboutPage: FC = () => {
                 </div>
             </section>
             
-            {/* // NEW HISTORY TIMELINE SECTION */}
+            {/* NEW HISTORY TIMELINE SECTION */}
             <section id="history" className="bg-gray-100 py-20 px-6">
                 <div className="max-w-7xl mx-auto">
                     <div className="text-center mb-10">
@@ -351,7 +341,7 @@ const AboutPage: FC = () => {
                 <div className="max-w-5xl mx-auto text-center">
                     <p className="text-fuchsia-700 font-semibold mb-2 text-sm uppercase tracking">GLOBAL FLAME( APOSTLE DANJUMA MUSA GAKSU)</p>
                     <h2 className="text-2xl font-sm mb-6 text-gray-900">OUR MOTTO: Raising a people of power who will manifest the kingdom and the realities of the fullness
-                        of Christ through the Holy Spirit.  </h2>
+                        of Christ through the Holy Spirit. </h2>
                     <p className="text-gray-700 max-w-3xl mx-auto text-lg leading-relaxed mb-12">
                         MISSION:: Immense salvation of souls, equipping the saints and manifesting the kingdom
                         through the demonstration of the Holy Spirit Power.
@@ -363,24 +353,24 @@ const AboutPage: FC = () => {
                             <Target className="w-10 h-10 text-purple-600 mx-auto mb-4" />
                             <h3 className="text-2xl font-bold mb-3 text-gray-800"> Commission</h3>
                             <p className="text-gray-600 leading-relaxed">
-                             --- We are committed to -- God and the ministry of the Holy Spirit in all we do.
+                              --- We are committed to -- God and the ministry of the Holy Spirit in all we do.
                             </p>
                         </div>
                         <div className="bg-white p-6 rounded-2xl shadow-xl border-t-4 border-fuchsia-600 hover:shadow-2xl transition-shadow duration-300">
                             <Eye className="w-10 h-10 text-fuchsia-700 mx-auto mb-4" />
                             <h3 className="text-2xl font-bold mb-3 text-gray-800">Fellowship</h3>
                             <p className="text-gray-600 leading-relaxed">
-                              ---  To be at the forefront of youth development through Prayer, Fellowships and Character Building.
+                              --- To be at the forefront of youth development through Prayer, Fellowships and Character Building.
                             </p>
                         </div>
                         <div className="bg-white p-6 rounded-2xl shadow-xl border-t-4 border-yellow-400 hover:shadow-1xl transition-shadow duration-300">
                             <Award className="w-10 h-10 text-yellow-500 mx-auto mb-4" />
                             <h3 className="text-2xl font-bold mb-3 text-gray-800">Integrity</h3>
                             <p className="text-gray-600 leading-relaxed">
-                              ---  To cultivate love, integrity and accountability.
+                              --- To cultivate love, integrity and accountability.
                             </p>
                         </div>
-                         <div className="bg-white p-6 rounded-2xl shadow-xl border-t-3 border-purple-600 hover:shadow-2xl transition-shadow duration-300">
+                          <div className="bg-white p-6 rounded-2xl shadow-xl border-t-3 border-purple-600 hover:shadow-2xl transition-shadow duration-300">
                             <Target className="w-10 h-10 text-purple-600 mx-auto mb-4" />
                             <h3 className="text-2xl font-bold mb-3 text-gray-800"> Excellence</h3>
                             <p className="text-gray-600 leading-relaxed">
@@ -422,8 +412,8 @@ const AboutPage: FC = () => {
                             {/* Image Container */}
                             <div className="relative overflow-hidden w-full h-60 bg-gray-200 flex items-center justify-center">
                                 <div className="absolute inset-0 bg-yellow-400 opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
+                                {/* Image is loaded using the ImageWithFallback component, referencing the absolute path */}
                                 <ImageWithFallback
-                                    // leader.image is now the imported asset variable, matching HomeCrew.tsx pattern!
                                     src={leader.image} 
                                     alt={leader.name}
                                     className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-300"
