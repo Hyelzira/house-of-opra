@@ -276,7 +276,7 @@ const AboutPage: FC = () => {
                         <p className="text-fuchsia-700 font-semibold mb-2 text-sm uppercase tracking-widest">AIMS AND OBJECTIVES</p>
                         <h2 className="text-3xl font-bold mb-5 text-gray-900">Our Vision: Raising Nations, Shaping Futures</h2>
                         <p className="text-gray-700 leading-relaxed mb-6 border-l-4 border-fuchsia-400 pl-4 italic">
-                            "To raise a people of power who will manifest the fullness of the Realities of the fullness of Christ through the Spirit."
+                            "To raise a people of power who will manifest the Realities of the fullness of Christ through the Spirit."
                         </p>
                         <p className="text-gray-600 leading-relaxed mb-8">
                             Is the same mission Jesus gave his followers: "Go therefore and make disciples of all nations"

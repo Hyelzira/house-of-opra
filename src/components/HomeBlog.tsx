@@ -10,10 +10,6 @@ import {
     X, 
 } from 'lucide-react';
 
-// 🚀 CRITICAL FIX: IMPORT ALL IMAGES
-// These imports instruct your bundler (Webpack/Vite) to process the images,
-// hash their names, and include them in the production build output.
-// The variables (e.g., imagePray) will hold the correct, final, public URL string.
 
 // **NOTE:** Ensure the paths are correct relative to BlogPage.tsx
 import imagePray from '../assets/images/pray.jpg';      // spiritual-growth.jpg
