@@ -1,5 +1,5 @@
 import { FiCpu, FiMusic, FiHeart } from "react-icons/fi";
-import speaker from "../assets/images/daddy-program.jpg"; // replace with your image
+import speaker from "../assets/images/daddy-program.jpg"; 
 
 const HomeFeatures = () => {
   const features = [

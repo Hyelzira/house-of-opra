@@ -43,7 +43,7 @@ const HomeFooter = () => (
           GFM YOUTH
         </h2>
         <p className="text-sm leading-relaxed mb-5 text-gray-400">
-          Empowering the next generation through **faith, skills, and community**.
+          Empowering the next generation through faith, skills, and community.
           Building leaders for a brighter future.
         </p>
         <div className="flex space-x-3 text-xl">
@@ -180,7 +180,7 @@ const HomeFooter = () => (
               href="mailto:houseofoperaworld@gmail.com"
               className="hover:text-fuchsia-500 transition duration-200"
             >
-              houseofoperaworld@gmail.com
+              globalflameyouthcommunity@gmail.com
             </a>
           </li>
           <li>
@@ -189,7 +189,7 @@ const HomeFooter = () => (
               href="tel:+234802429018"
               className="hover:text-fuchsia-500 transition duration-200"
             >
-              (+234) 802 642 9018
+              (+234)813 684 8041
             </a>
           </li>
           <li>
